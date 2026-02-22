@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Integration Study Master</title>
+    <title>Strict Case-Sensitive Integration Quiz</title>
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -12,7 +12,7 @@
         justify-content: center;
         min-height: 100vh;
         margin: 0;
-        background-color: #f1f5f9;
+        background-color: #f8fafc;
       }
       .card {
         background: white;
@@ -22,6 +22,7 @@
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         text-align: center;
+        border-top: 5px solid #1e293b;
       }
       .progress {
         color: #64748b;
@@ -42,21 +43,20 @@
         justify-content: center;
       }
 
-      /* Input Styles */
       input[type="text"] {
         border: none;
-        border-bottom: 3px solid #3b82f6;
+        border-bottom: 3px solid #1e293b;
         outline: none;
         padding: 5px 10px;
         font-size: 1.2rem;
         text-align: center;
-        color: #2563eb;
+        color: #1e293b;
         font-weight: bold;
-        width: 200px;
+        width: 220px;
         background: #f8fafc;
+        border-radius: 4px;
       }
 
-      /* True/False Styles */
       .tf-container {
         display: flex;
         justify-content: center;
@@ -74,9 +74,9 @@
         color: #475569;
       }
       .tf-btn.selected {
-        background: #3b82f6;
+        background: #1e293b;
         color: white;
-        border-color: #3b82f6;
+        border-color: #1e293b;
       }
 
       .feedback {
@@ -105,7 +105,7 @@
         cursor: pointer;
         font-weight: bold;
         transition: 0.2s;
-        background: #3b82f6;
+        background: #1e293b;
         color: white;
       }
       button.action:disabled {
@@ -113,17 +113,8 @@
         cursor: not-allowed;
       }
       button.action:hover:not(:disabled) {
-        background: #2563eb;
         transform: translateY(-2px);
-      }
-      .shuffle-btn {
-        background: #64748b;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
@@ -150,9 +141,7 @@
         <div class="feedback" id="feedback-msg"></div>
 
         <div class="nav-btns">
-          <button class="shuffle-btn" onclick="shuffleAndStart()">
-            🔀 Randomize All
-          </button>
+          <button class="action" onclick="shuffleAndStart()">🔀 Shuffle</button>
           <button class="action" id="check-btn" onclick="checkCurrent()">
             Check Answer
           </button>
@@ -168,12 +157,12 @@
       </div>
 
       <div id="result-ui" style="display: none">
-        <h2 style="color: #1e293b">Study Session Complete!</h2>
+        <h2 style="color: #1e293b">Quiz Complete!</h2>
         <div
           id="final-score"
-          style="font-size: 2.5rem; margin: 20px 0; color: #3b82f6"
+          style="font-size: 2.5rem; margin: 20px 0; color: #1e293b"
         ></div>
-        <button class="action" onclick="shuffleAndStart()">Restart Quiz</button>
+        <button class="action" onclick="shuffleAndStart()">Restart</button>
       </div>
     </div>
 
@@ -182,207 +171,167 @@
         {
           q: "A private API is intended for use within an organization and emphasizes strong (______) controls.",
           a: "security",
-          type: "blank",
         },
         {
           q: "One common challenge of system integration is managing (______) dependency and maintenance complexity.",
           a: "vendor",
-          type: "blank",
         },
         {
           q: "An automated warehouse system benefits from (______) integration and software for tracking operations.",
           a: "robotics",
-          type: "blank",
         },
         {
           q: "The difference between architecture and integration lies in design versus (______).",
           a: "connection",
-          type: "blank",
         },
         {
           q: "APIs enable organizations to monetize data through (______) sharing while maintaining controlled access.",
           a: "data",
-          type: "blank",
         },
         {
           q: "A major advantage of API-based integration is improved (______) sharing and collaboration across systems.",
           a: "data",
-          type: "blank",
         },
         {
           q: "In a smart home project, IoT devices such as sensors and smart appliances must communicate through (______).",
           a: "protocols",
-          type: "blank",
         },
         {
           q: "Public APIs are open to external developers and often require (______) or API keys.",
           a: "registration",
-          type: "blank",
         },
         {
           q: "A healthcare monitoring system relies on real-time data from sensors and secure (______) protocols.",
           a: "communication",
-          type: "blank",
         },
         {
           q: "Security considerations in integration include protecting data in transit and at (______).",
           a: "rest",
-          type: "blank",
         },
         {
           q: "Real-time processing in an integrated system requires reliable data (______) and fast processing pipelines.",
           a: "storage",
-          type: "blank",
         },
         {
           q: "In ERP integration, modular software like finance, HR, and inventory can be unified through (______).",
           a: "middleware",
-          type: "blank",
         },
         {
           q: "System integration is the process of joining software and hardware modules into one cohesive (______).",
           a: "infrastructure",
-          type: "blank",
         },
         {
           q: "The initial cost of system integration is often high due to (______) and implementation efforts.",
           a: "complexity",
-          type: "blank",
         },
         {
           q: "A Smart Traffic Management System uses sensor networks and algorithms to optimize (______) of vehicles.",
           a: "flow",
-          type: "blank",
         },
         {
           q: "The architecture of a system defines its high-level structure as a collection of interacting (______).",
           a: "components",
-          type: "blank",
         },
         {
           q: "An architecture description language is a formalized approach used to describe system (______).",
           a: "architecture",
-          type: "blank",
         },
         {
           q: "A key objective of system integration is to enable all pieces to work as a (______).",
           a: "whole",
-          type: "blank",
         },
         {
           q: "The term 'integration' emphasizes connecting systems for (______) and communication between components.",
           a: "data",
-          type: "blank",
         },
         {
           q: "An architecture should provide a system blueprint that guides (______) and future scalability.",
           a: "development",
-          type: "blank",
         },
-      ];
+      ].map((q) => ({ ...q, type: "blank" }));
 
       const tfQuestions = [
         {
           q: "Event-driven architectures are incompatible with real-time monitoring use cases.",
           a: "False",
-          type: "tf",
         },
         {
           q: "Private APIs inherently offer more external collaboration opportunities than public APIs.",
           a: "False",
-          type: "tf",
         },
         {
           q: "High initial costs are not a major consideration when evaluating system integration options.",
           a: "False",
-          type: "tf",
         },
         {
           q: "An ERP integration project typically aims to unify multiple business modules like finance, HR, and inventory.",
           a: "True",
-          type: "tf",
         },
         {
           q: "A workload where sensors generate continuous data streams can be effectively supported by cloud storage and real-time processing.",
           a: "True",
-          type: "tf",
         },
         {
           q: "The term architecture description language refers to formal languages used to describe system architectures.",
           a: "True",
-          type: "tf",
         },
         {
           q: "An advantage of integrations is the automatic elimination of all performance bottlenecks in the system.",
           a: "False",
-          type: "tf",
         },
         {
           q: "One of the disadvantages of system integration is reduced scalability due to tightly coupled systems.",
           a: "False",
-          type: "tf",
         },
         {
           q: "In a smart home automation system, integration scales primarily through hardware expansion rather than software interoperability.",
           a: "False",
-          type: "tf",
         },
         {
           q: "Vendor dependency is a potential disadvantage of some integration approaches.",
           a: "True",
-          type: "tf",
         },
         {
           q: "Open/public APIs generally require API keys and are designed for use only within a single organization.",
           a: "False",
-          type: "tf",
         },
         {
           q: "A key advantage of system integration is the potential for real-time data consistency across connected systems.",
           a: "True",
-          type: "tf",
         },
         {
           q: "The primary purpose of system integration is to connect systems to enable consistent communication and data exchange.",
           a: "True",
-          type: "tf",
         },
         {
           q: "System architecture focuses on the high-level structure and organization of a system, not the specific implementations of each component.",
           a: "True",
-          type: "tf",
         },
         {
           q: "System integration is primarily concerned with the internal design of a single component rather than the interaction between multiple components.",
           a: "False",
-          type: "tf",
         },
         {
           q: "Middleware serves as an interface layer that helps disparate systems communicate without changing their core applications.",
           a: "True",
-          type: "tf",
         },
         {
           q: "A benefit of API-driven integration is easier reuse of existing services across new applications.",
           a: "True",
-          type: "tf",
         },
         {
           q: "Security concerns are entirely eliminated once systems are integrated because continuous data flow is secure by default.",
           a: "False",
-          type: "tf",
         },
         {
           q: "Security and access control are important considerations only for public APIs, not private or partner APIs.",
           a: "False",
-          type: "tf",
         },
         {
           q: "APIs can enable interoperability between disparate software systems by exposing data and functionality.",
           a: "True",
-          type: "tf",
         },
-      ];
+      ].map((q) => ({ ...q, type: "tf" }));
 
       let currentIdx = 0;
       let score = 0;
@@ -447,11 +396,8 @@
         let isCorrect = false;
 
         if (qObj.type === "blank") {
-          const userVal = document
-            .getElementById("user-input")
-            .value.trim()
-            .toLowerCase();
-          isCorrect = userVal === qObj.a.toLowerCase();
+          const userVal = document.getElementById("user-input").value.trim();
+          isCorrect = userVal === qObj.a;
           document.getElementById("user-input").disabled = true;
         } else {
           if (!selectedTFValue) {
@@ -465,7 +411,7 @@
           feedback.innerHTML = '<span class="correct">✓ Correct!</span>';
           score++;
         } else {
-          feedback.innerHTML = `<span class="incorrect">✗ Incorrect. The answer is: ${qObj.a}</span>`;
+          feedback.innerHTML = `<span class="incorrect">✗ Incorrect. Expected: "${qObj.a}"</span>`;
         }
 
         document.getElementById("check-btn").disabled = true;
@@ -488,7 +434,6 @@
           `${score} / ${shuffledList.length}`;
       }
 
-      // Support Enter key for text inputs
       document
         .getElementById("user-input")
         .addEventListener("keypress", function (e) {
